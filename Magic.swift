@@ -24,6 +24,14 @@ public func magic<T>(object: T, _ file: String = __FILE__, _ function: String = 
 {
     let fileString = file as NSString
     let fileLastPathComponent = fileString.lastPathComponent as NSString
+    
+    let date = NSDate()
+    let calendar = NSCalendar.currentCalendar()
+    let components = calendar.components([.Hour, .Minute, .Second], fromDate: date)
+    
     let filename = fileLastPathComponent.stringByDeletingPathExtension
-    print("\(filename).\(function)[\(line)]: \(object)\n", terminator: "")
+    print("\(components.hour):\(components.minute):\(components.second): \(filename).\(function)[\(line)]: \(object)\n", terminator: "")
 }
+
+
+
