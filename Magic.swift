@@ -20,16 +20,16 @@ import Foundation
     - parameter line:     Defaults to the line number within the file in which magic() was called. Do not override this default.
 
 */
-public func magic<T>(object: T, _ file: String = #file, _ function: String = #function, _ line: Int = #line)
+public func magic<T>(_ object: T, _ file: String = #file, _ function: String = #function, _ line: Int = #line)
 {
     let fileString = file as NSString
     let fileLastPathComponent = fileString.lastPathComponent as NSString
     
-    let date = NSDate()
-    let calendar = NSCalendar.currentCalendar()
-    let components = calendar.components([.Hour, .Minute, .Second], fromDate: date)
+    let date = Date()
+    let calendar = Calendar.current
+    let components = calendar.dateComponents([.hour, .minute, .second], from: date)
     
-    let filename = fileLastPathComponent.stringByDeletingPathExtension
+    let filename = fileLastPathComponent.deletingPathExtension
     print("\(components.hour):\(components.minute):\(components.second): \(filename).\(function)[\(line)]: \(object)\n", terminator: "")
 }
 
