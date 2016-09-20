@@ -30,7 +30,7 @@ public func magic<T>(_ object: T, _ file: String = #file, _ function: String = #
     let components = calendar.dateComponents([.hour, .minute, .second], from: date)
     
     let filename = fileLastPathComponent.deletingPathExtension
-    print("\(components.hour):\(components.minute):\(components.second): \(filename).\(function)[\(line)]: \(object)\n", terminator: "")
+    print("\(components.hour!):\(components.minute!):\(components.second!) --- \(filename).\(function)[\(line)]: \(object)\n", terminator: "")
 }
 
 
