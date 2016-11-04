@@ -4,6 +4,8 @@
 //  Created by Arthur Sabintsev on 1/28/15.
 //  Copyright (c) 2015 Arthur Ariel Sabintsev. All rights reserved.
 //
+//  Forked by Dylan Edwards on Feb 5, 2016
+//
 
 import Foundation
 
@@ -19,7 +21,9 @@ import Foundation
     - parameter function: Defaults to the name of the function within the file in which magic() was called. Do not override this default.
     - parameter line:     Defaults to the line number within the file in which magic() was called. Do not override this default.
 
+ 
 */
+
 public func magic<T>(_ object: T, _ file: String = #file, _ function: String = #function, _ line: Int = #line)
 {
     let fileString = file as NSString
@@ -30,7 +34,9 @@ public func magic<T>(_ object: T, _ file: String = #file, _ function: String = #
     let components = calendar.dateComponents([.hour, .minute, .second], from: date)
     
     let filename = fileLastPathComponent.deletingPathExtension
-    print("\(components.hour!):\(components.minute!):\(components.second!) --- \(filename).\(function)[\(line)]: \(object)\n", terminator: "")
+
+    /// Experimenting with dump instead of print
+    dump("\(components.hour):\(components.minute):\(components.second): \(filename).\(function)[\(line)]: \(object)\n", terminator: "")
 }
 
 
