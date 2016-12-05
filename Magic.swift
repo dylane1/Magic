@@ -36,7 +36,8 @@ public func magic<T>(_ object: T, _ file: String = #file, _ function: String = #
     let filename = fileLastPathComponent.deletingPathExtension
 
     /// Experimenting with dump instead of print
-    dump("\(components.hour):\(components.minute):\(components.second): \(filename).\(function)[\(line)]: \(object)\n", terminator: "")
+    print("\(components.hour!):\(components.minute!):\(components.second!): \(filename).\(function)[\(line)]:\n", terminator: "")
+    dump(object)
 }
 
 
